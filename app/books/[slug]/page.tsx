@@ -41,7 +41,7 @@ export default async function BookDetailsPage({ params }: Props) {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column: Image/Cover & Details */}
-          <div className="h-fit space-y-12">
+          <div className="h-fit space-y-12 order-2 lg:order-1">
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-12 h-12 border-t-[4px] border-l-[4px] border-[#2d2d2d] hidden md:block"></div>
               <div className="absolute -bottom-6 -right-6 w-12 h-12 border-b-[4px] border-r-[4px] border-[#2d2d2d] hidden md:block"></div>
@@ -108,7 +108,7 @@ export default async function BookDetailsPage({ params }: Props) {
           </div>
           
           {/* Right Column: Details */}
-          <div>
+          <div className="order-1 lg:order-2">
             <div className="mb-12 relative">
               <div className="absolute -top-4 -right-4 bg-[var(--color-brand-50)] text-[#2d2d2d] px-4 py-2 border-[3px] border-[#2d2d2d] wobbly-sm font-bold text-xl rotate-6 hard-shadow-sm z-10">
                 {book.format} Download
