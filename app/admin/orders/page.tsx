@@ -43,19 +43,44 @@ export default async function AdminOrdersPage() {
     );
   }
 
-  let orders: any[] = [];
+interface OrderItem {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  country: string;
+  bookTitle: string;
+  price: string;
+  paymentId: string;
+  status: string;
+  date: string;
+}
+
+  let orders: OrderItem[] = [];
   
   try {
     const client = await clientPromise;
     const db = client.db('bookstore');
-    orders = await db.collection('orders').find({}).sort({ date: -1 }).toArray();
+    const result = await db.collection('orders').find({}).sort({ date: -1 }).toArray();
+    orders = result.map(doc => ({
+      id: doc.id,
+      name: doc.name,
+      email: doc.email,
+      phone: doc.phone,
+      country: doc.country,
+      bookTitle: doc.bookTitle,
+      price: doc.price,
+      paymentId: doc.paymentId,
+      status: doc.status,
+      date: doc.date
+    })) as OrderItem[];
   } catch (e) {
     console.error('Failed to fetch from MongoDB:', e);
     orders = [];
   }
 
-  const totalSales = orders.filter((o: any) => o.status === 'Paid').length;
-  const totalRevenue = orders.filter((o: any) => o.status === 'Paid').reduce((acc: number, order: any) => {
+  const totalSales = orders.filter((o: OrderItem) => o.status === 'Paid').length;
+  const totalRevenue = orders.filter((o: OrderItem) => o.status === 'Paid').reduce((acc: number, order: OrderItem) => {
     const priceMatch = order.price.match(/\d+/);
     return acc + (priceMatch ? parseInt(priceMatch[0]) : 0);
   }, 0);
@@ -125,7 +150,7 @@ export default async function AdminOrdersPage() {
                     </td>
                   </tr>
                 ) : (
-                  orders.map((order: any, idx: number) => (
+                  orders.map((order: OrderItem, idx: number) => (
                     <tr key={order.id} className={`border-b-[3px] border-dashed border-[#2d2d2d] hover:bg-gray-50 transition-colors ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
                       <td className="p-4 border-r-[3px] border-dashed border-[#2d2d2d]">
                         <span className="font-heading font-bold text-[#ff4d4d]">{order.id}</span>
