@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <div className="space-y-10 text-xl font-bold text-[#2d2d2d] dark:text-[var(--color-paper)] leading-relaxed">
             <section>
               <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">1. Introduction</h2>
-              <p>Coffee Reads ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website starbucksnews.com (the "Website").</p>
+              <p>Coffee Reads (&quot;we,&quot; &quot;us,&quot; &quot;our,&quot; or &quot;Company&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website starbucksnews.com (the &quot;Website&quot;).</p>
               <p className="mt-4">Please read this Privacy Policy carefully. If you do not agree with our practices, please do not use the Website.</p>
             </section>
 
@@ -82,17 +82,17 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">8. Your Privacy Rights</h2>
               <ul className="list-disc pl-6 space-y-2 opacity-90">
-                <li><strong>8.1 Access:</strong> You have the right to access your personal information. Submit a request to swagcentral012@gmail.com with "Data Access Request" in the subject line.</li>
+                <li><strong>8.1 Access:</strong> You have the right to access your personal information. Submit a request to swagcentral012@gmail.com with &quot;Data Access Request&quot; in the subject line.</li>
                 <li><strong>8.2 Correction:</strong> You can update or correct inaccurate information through your account settings or by contacting us.</li>
                 <li><strong>8.3 Deletion:</strong> You may request deletion of your account and personal data, subject to legal retention requirements.</li>
-                <li><strong>8.4 Opt-Out:</strong> You can unsubscribe from marketing communications by clicking the "Unsubscribe" link in emails, updating account preferences, or contacting us directly.</li>
+                <li><strong>8.4 Opt-Out:</strong> You can unsubscribe from marketing communications by clicking the &quot;Unsubscribe&quot; link in emails, updating account preferences, or contacting us directly.</li>
                 <li><strong>8.5 Data Portability:</strong> You may request a copy of your data in a portable format.</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">9. Children's Privacy</h2>
-              <p>The Website is not intended for users under 18 years of age. We do not knowingly collect information from minors. If a minor's information is collected without consent, parents/guardians can request immediate deletion by contacting us.</p>
+              <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">9. Children&apos;s Privacy</h2>
+              <p>The Website is not intended for users under 18 years of age. We do not knowingly collect information from minors. If a minor&apos;s information is collected without consent, parents/guardians can request immediate deletion by contacting us.</p>
             </section>
 
             <section>

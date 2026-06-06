@@ -19,7 +19,7 @@ export default function TermsPage() {
           <div className="space-y-10 text-xl font-bold text-[#2d2d2d] dark:text-[var(--color-paper)] leading-relaxed">
             <section>
               <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">1. Introduction</h2>
-              <p>Welcome to Coffee Reads ("we," "us," "our," or "Company"). These Terms and Conditions ("Terms") govern your access to and use of our website starbucksnews.com (the "Website") and the purchase of digital products offered therein.</p>
+              <p>Welcome to Coffee Reads (&quot;we,&quot; &quot;us,&quot; &quot;our,&quot; or &quot;Company&quot;). These Terms and Conditions (&quot;Terms&quot;) govern your access to and use of our website starbucksnews.com (the &quot;Website&quot;) and the purchase of digital products offered therein.</p>
               <p className="mt-4">By accessing or using this Website, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please do not use the Website.</p>
             </section>
 
@@ -42,7 +42,7 @@ export default function TermsPage() {
               <h3 className="text-2xl font-bold mt-6 mb-2">3.3 Exception</h3>
               <p>Refunds may only be considered in cases of:</p>
               <ul className="list-disc pl-6 space-y-2 mt-4 opacity-90">
-                <li><strong>Technical Failure:</strong> The digital product file is corrupted or cannot be downloaded due to our Website's technical error.</li>
+                <li><strong>Technical Failure:</strong> The digital product file is corrupted or cannot be downloaded due to our Website&apos;s technical error.</li>
                 <li><strong>Payment Error:</strong> You were charged multiple times for a single purchase due to our system error.</li>
               </ul>
               <p className="mt-4">In such cases, customers must contact us within 7 days of purchase with evidence of the issue.</p>
@@ -82,7 +82,7 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-3xl font-heading font-bold text-[#2d5da1] mb-4">7. Limitation of Liability</h2>
-              <p><strong>7.1 No Warranties:</strong> Digital products are provided "AS IS" without any warranties, express or implied, including fitness for a particular purpose or merchantability.</p>
+              <p><strong>7.1 No Warranties:</strong> Digital products are provided &quot;AS IS&quot; without any warranties, express or implied, including fitness for a particular purpose or merchantability.</p>
               <p className="mt-4"><strong>7.2 Limitation of Damages:</strong> To the fullest extent permitted by law, Coffee Reads shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Website or digital products.</p>
               <p className="mt-4"><strong>7.3 Liability Cap:</strong> Our total liability shall not exceed the amount you paid for the digital product.</p>
             </section>
