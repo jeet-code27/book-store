@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-brand-50: #fff9c4; /* Post-it Yellow */
   --color-brand-100: #e5e0d8; /* Muted / Old Paper */
@@ -25,15 +27,7 @@
   --font-patrick: var(--font-patrick);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* For this design, we'll keep the paper look even in dark mode, or make it a "dark paper" */
-    --background: #2d2d2d;
-    --foreground: #fdfbf7;
-    --color-pencil: #fdfbf7;
-    --color-paper: #2d2d2d;
-  }
-}
+
 
 body {
   background-color: var(--background);
@@ -47,11 +41,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-kalam), cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: radial-gradient(rgba(253, 251, 247, 0.1) 1px, transparent 1px);
-  }
-}
+
 
 @layer utilities {
   .wobbly {
