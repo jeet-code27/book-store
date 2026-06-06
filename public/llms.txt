@@ -1,0 +1,19 @@
+# Coffee Reads
+
+Coffee Reads is a premium digital book store providing high-quality educational materials and guides.
+
+## Products Available
+- The Ultimate Claude 3.5 Sonnet Guide (The complete masterclass on using Anthropic's Claude 3.5 Sonnet AI)
+- Divorced Dad's Guide to Winning Custody (English)
+- Divorced Dad's Guide to Winning Custody (Hindi)
+
+## Payment & Delivery
+Payments are processed securely via Razorpay. Upon successful payment, customers immediately receive a direct download link for the PDF via email.
+
+## Links
+- Store: https://starbucksnews.com
+- Books: https://starbucksnews.com/books
+- About Us: https://starbucksnews.com/about
+- Contact: https://starbucksnews.com/contact
+
+Contact Email: swagcentral012@gmail.com
