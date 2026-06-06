@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PRODUCTS } from '@/lib/products';
 import BookCard from '@/components/BookCard';
-import { ArrowRight, CheckCircle2, Shield, Zap, MessageSquare, Star, HelpCircle, Lightbulb } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Shield, Zap, Star, HelpCircle, Lightbulb } from 'lucide-react';
 
 export default function Home() {
   const books = Object.values(PRODUCTS);
@@ -231,7 +231,7 @@ export default function Home() {
                   <Star fill="currentColor" size={24} />
                 </div>
                 <p className="text-xl font-bold text-[#2d2d2d] dark:text-[#e5e0d8] mb-6">
-                  "The Claude guide is exactly what I needed. No corporate jargon, just straight to the point workflows that actually save me hours every week."
+                  &quot;The Claude guide is exactly what I needed. No corporate jargon, just straight to the point workflows that actually save me hours every week.&quot;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white border-[3px] border-[#2d2d2d] wobbly-sm flex items-center justify-center rotate-3">
@@ -259,7 +259,7 @@ export default function Home() {
                   <Star fill="currentColor" size={24} />
                 </div>
                 <p className="text-xl font-bold text-[#2d2d2d] dark:text-[#e5e0d8] mb-6">
-                  "Divorce Dad guide was a lifesaver. It felt like talking to a friend who had been through it all before. Highly recommend it to anyone struggling."
+                  &quot;Divorce Dad guide was a lifesaver. It felt like talking to a friend who had been through it all before. Highly recommend it to anyone struggling.&quot;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[var(--color-brand-50)] border-[3px] border-[#2d2d2d] wobbly-sm flex items-center justify-center -rotate-3">

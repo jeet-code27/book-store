@@ -54,7 +54,7 @@ export default function CheckoutForm({ book }: { book: Product }) {
         name: process.env.NEXT_PUBLIC_SITE_NAME || 'Premium Book Store',
         description: `Purchase of ${book.title}`,
         order_id: orderData.id, 
-        handler: async function (response: any) {
+        handler: async function (response: { razorpay_order_id: string, razorpay_payment_id: string, razorpay_signature: string }) {
           try {
             // 3. Verify Payment Signature
             const verifyRes = await fetch('/api/verify-payment', {
@@ -86,7 +86,7 @@ export default function CheckoutForm({ book }: { book: Product }) {
               setError(verifyData.error || 'Payment verification failed.');
               setIsSubmitting(false);
             }
-          } catch (err) {
+          } catch {
             setError('An error occurred during verification.');
             setIsSubmitting(false);
           }
@@ -106,16 +106,16 @@ export default function CheckoutForm({ book }: { book: Product }) {
         }
       };
 
-      // @ts-ignore
+      // @ts-expect-error Razorpay is not in the window type
       const rzp1 = new window.Razorpay(options);
-      rzp1.on('payment.failed', function (response: any) {
+      rzp1.on('payment.failed', function (response: { error: { description: string } }) {
         setError(`Payment failed: ${response.error.description}`);
         setIsSubmitting(false);
       });
       rzp1.open();
 
-    } catch (err: any) {
-      setError(err.message || 'A network error occurred. Please try again.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'A network error occurred. Please try again.');
       setIsSubmitting(false);
     }
   };

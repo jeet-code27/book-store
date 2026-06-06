@@ -72,7 +72,7 @@ export default async function BookDetailsPage({ params }: Props) {
             {book.whatsIncluded && book.whatsIncluded.length > 0 && (
               <div className="w-full max-w-md mx-auto lg:mx-0">
                 <h2 className="text-3xl font-heading font-bold text-[#2d2d2d] dark:text-[var(--color-paper)] mb-6 inline-block relative">
-                  What's Included in the Bundle
+                  What&apos;s Included in the Bundle
                   <span className="absolute -bottom-1 left-0 w-full h-1 bg-[#ff4d4d] wobbly"></span>
                 </h2>
                 <div className="space-y-6">
