@@ -15,9 +15,14 @@ export default function Header() {
           <div className="bg-white border-[3px] border-[#2d2d2d] text-[#2d2d2d] p-1.5 sm:p-2 wobbly hard-shadow-sm group-hover:bg-[#ff4d4d] group-hover:text-white transition-colors">
             <BookOpen size={20} className="sm:w-6 sm:h-6" strokeWidth={2.5} />
           </div>
-          <span className="font-heading font-bold text-2xl sm:text-3xl tracking-tight text-[#2d2d2d] ml-1 sm:ml-2 line-clamp-1">
-            {process.env.NEXT_PUBLIC_SITE_NAME || 'Book Store'}
-          </span>
+          <div className="flex flex-col ml-1 sm:ml-2">
+            <span className="font-heading font-bold text-2xl sm:text-3xl tracking-tight text-[#2d2d2d] line-clamp-1 leading-none pt-1">
+              {process.env.NEXT_PUBLIC_SITE_NAME || 'Book Store'}
+            </span>
+            <span className="text-[10px] sm:text-xs font-bold text-[#2d5da1] tracking-wider mt-0.5 font-sans">
+              by swagcentral
+            </span>
+          </div>
         </Link>
         
         {/* Desktop Nav */}

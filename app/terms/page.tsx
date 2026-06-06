@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Terms of Service | Premium Book Store',
+  title: `Terms of Service | ${process.env.NEXT_PUBLIC_SITE_NAME || 'StarBucks Reads'}`,
 };
 
 export default function TermsPage() {

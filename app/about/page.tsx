@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'About Us | Premium Book Store',
+  title: `About Us | ${process.env.NEXT_PUBLIC_SITE_NAME || 'StarBucks Reads'}`,
 };
 
 export default function AboutPage() {

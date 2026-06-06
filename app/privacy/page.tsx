@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Privacy Policy | Premium Book Store',
+  title: `Privacy Policy | ${process.env.NEXT_PUBLIC_SITE_NAME || 'StarBucks Reads'}`,
 };
 
 export default function PrivacyPage() {
