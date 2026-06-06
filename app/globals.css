@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fff9c4; /* Post-it Yellow */
+  --color-brand-100: #e5e0d8; /* Muted / Old Paper */
+  --color-brand-400: #ff4d4d; /* Accent Red */
+  --color-brand-500: #ff4d4d; /* Accent Red */
+  --color-brand-600: #ff4d4d; /* Accent Red */
+  --color-brand-700: #d63c3c; /* Darker Red for hover */
+  --color-secondary-500: #2d5da1; /* Blue ballpoint pen */
+  
+  --color-pastel-green: #dcfce7;
+  --color-pastel-blue: #e0f2fe;
+  --color-pastel-pink: #fce7f3;
+  --color-pastel-purple: #f3e8ff;
+  
+  --color-pencil: #2d2d2d;
+  --color-paper: #fdfbf7;
+}
+
+:root {
+  --background: #fdfbf7;
+  --foreground: #2d2d2d;
+  --font-kalam: var(--font-kalam);
+  --font-patrick: var(--font-patrick);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* For this design, we'll keep the paper look even in dark mode, or make it a "dark paper" */
+    --background: #2d2d2d;
+    --foreground: #fdfbf7;
+    --color-pencil: #fdfbf7;
+    --color-paper: #2d2d2d;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-patrick), cursive;
+  background-image: radial-gradient(var(--color-brand-100) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-kalam), cursive;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: radial-gradient(rgba(253, 251, 247, 0.1) 1px, transparent 1px);
+  }
+}
+
+@layer utilities {
+  .wobbly {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important;
+  }
+  .wobbly-md {
+    border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px !important;
+  }
+  .wobbly-sm {
+    border-radius: 255px 5px 225px 5px / 5px 225px 5px 255px !important;
+  }
+  
+  .hard-shadow {
+    box-shadow: 4px 4px 0px 0px var(--color-pencil);
+  }
+  .hard-shadow-lg {
+    box-shadow: 8px 8px 0px 0px var(--color-pencil);
+  }
+  .hard-shadow-sm {
+    box-shadow: 2px 2px 0px 0px var(--color-pencil);
+  }
+  .hard-shadow-none {
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+}
