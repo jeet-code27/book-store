@@ -22,9 +22,9 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      const paymentStatus = paymentId ? `Paid via Razorpay (ID: ${paymentId})` : 'Pending (Manual Payment)';
+      const paymentStatus = paymentId ? `Paid via PayPal (ID: ${paymentId})` : 'Pending (Manual Payment)';
       const actionText = paymentId 
-        ? 'Please deliver the PDF to the customer as they have already paid via Razorpay.'
+        ? 'Please deliver the PDF to the customer as they have already paid via PayPal.'
         : 'Please contact the customer to arrange payment and deliver the PDF.';
 
       // 1. Send notification email to owner
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       });
 
       const customerText = paymentId
-        ? `<p>We have successfully received your payment via Razorpay.</p><p>The author will send you the PDF manually within 24 hours.</p>`
+        ? `<p>We have successfully received your payment via PayPal.</p><p>The author will send you the PDF manually within 24 hours.</p>`
         : `<p>We have received your order request. Because we process payments manually, the author will send you an email shortly with payment instructions.</p><p>Once payment is confirmed, your PDF will be delivered within 24 hours.</p>`;
 
       // 2. Send confirmation email to customer
@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
       });
     } catch (emailError) {
       console.warn('Email sending failed (SMTP might not be configured):', emailError);
-      // We log the error but DO NOT throw it, so the Razorpay checkout succeeds and redirects to Thank You page!
+      // We log the error but DO NOT throw it, so the PayPal checkout succeeds and redirects to Thank You page!
     }
 
     // 3. Save order to MongoDB

@@ -1,25 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Product } from '@/lib/products';
 import { Loader2 } from 'lucide-react';
-import { useCurrency } from './CurrencyContext';
-import Script from 'next/script';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function CheckoutForm({ book }: { book: Product }) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { currency, mounted } = useCurrency();
-  const displayPrice = !mounted || currency === 'USD' ? `$${book.priceUSD} USD` : `₹${book.priceINR} INR`;
+  const formRef = useRef<HTMLFormElement>(null);
+  
+  const displayPrice = `$${book.priceUSD} USD`;
+  const amount = book.priceUSD.toString();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    const formData = new FormData(e.currentTarget);
+  const handleOrderSave = async (paymentId: string) => {
+    if (!formRef.current) return;
+    const formData = new FormData(formRef.current);
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -27,103 +25,32 @@ export default function CheckoutForm({ book }: { book: Product }) {
       country: formData.get('country'),
       bookId: book.id,
       bookTitle: book.title,
-      price: displayPrice,
+      price: `$${book.priceUSD} USD`, // Always record in USD for PayPal
+      paymentId: paymentId
     };
 
-    const amount = currency === 'USD' ? Math.round(book.priceUSD * 100) : Math.round(book.priceINR! * 100);
-    const orderCurrency = currency === 'USD' ? 'USD' : 'INR';
-
     try {
-      // 1. Create Razorpay Order
-      const orderRes = await fetch('/api/create-order', {
+      const recordRes = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount, currency: orderCurrency, receipt: `receipt_${book.id}` }),
+        body: JSON.stringify(data),
       });
-      const orderData = await orderRes.json();
-
-      if (!orderRes.ok) {
-        throw new Error(orderData.error || 'Failed to create order');
-      }
-
-      // 2. Open Razorpay Checkout Modal
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
-        amount: orderData.amount, 
-        currency: orderData.currency,
-        name: process.env.NEXT_PUBLIC_SITE_NAME || 'Premium Book Store',
-        description: `Purchase of ${book.title}`,
-        order_id: orderData.id, 
-        handler: async function (response: { razorpay_order_id: string, razorpay_payment_id: string, razorpay_signature: string }) {
-          try {
-            // 3. Verify Payment Signature
-            const verifyRes = await fetch('/api/verify-payment', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-              }),
-            });
-            const verifyData = await verifyRes.json();
-
-            if (verifyRes.ok && verifyData.success) {
-              // 4. Send Confirmation Email & Save Order
-              const recordRes = await fetch('/api/orders', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...data, paymentId: response.razorpay_payment_id }),
-              });
-              
-              if (recordRes.ok) {
-                router.push('/thank-you');
-              } else {
-                setError('Payment successful but failed to record order. Please contact support.');
-                setIsSubmitting(false);
-              }
-            } else {
-              setError(verifyData.error || 'Payment verification failed.');
-              setIsSubmitting(false);
-            }
-          } catch {
-            setError('An error occurred during verification.');
-            setIsSubmitting(false);
-          }
-        },
-        prefill: {
-          name: data.name,
-          email: data.email,
-          contact: data.phone || '',
-        },
-        theme: {
-          color: '#ff4d4d',
-        },
-        modal: {
-          ondismiss: function() {
-            setIsSubmitting(false);
-          }
-        }
-      };
-
-      // @ts-expect-error Razorpay is not in the window type
-      const rzp1 = new window.Razorpay(options);
-      rzp1.on('payment.failed', function (response: { error: { description: string } }) {
-        setError(`Payment failed: ${response.error.description}`);
+      
+      if (recordRes.ok) {
+        router.push('/thank-you');
+      } else {
+        setError('Payment successful but failed to record order. Please contact support.');
         setIsSubmitting(false);
-      });
-      rzp1.open();
-
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'A network error occurred. Please try again.');
+      }
+    } catch {
+      setError('A network error occurred while saving the order.');
       setIsSubmitting(false);
     }
   };
 
   return (
-    <>
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test", currency: "USD" }}>
+      <form ref={formRef} className="space-y-6" onSubmit={(e) => e.preventDefault()}>
       {error && (
         <div className="p-4 bg-white border-[3px] border-[#2d2d2d] wobbly hard-shadow-sm text-[#ff4d4d] text-xl font-bold rotate-1">
           {error}
@@ -194,26 +121,66 @@ export default function CheckoutForm({ book }: { book: Product }) {
         </div>
       </div>
 
-      <div className="pt-8 mt-8 border-t-[3px] border-dashed border-[#2d2d2d]">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full flex items-center justify-center py-4 px-8 wobbly border-[3px] border-[#2d2d2d] text-2xl font-bold bg-white text-[#2d2d2d] hover:bg-[#ff4d4d] hover:text-white hard-shadow active:hard-shadow-none active:translate-x-[4px] active:translate-y-[4px] disabled:opacity-70 disabled:cursor-not-allowed transition-all"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="animate-spin mr-2" size={24} strokeWidth={3} />
-              Processing...
-            </>
-          ) : (
-            `Complete Order — ${displayPrice}`
-          )}
-        </button>
+      <div className="pt-8 mt-8 border-t-[3px] border-dashed border-[#2d2d2d] relative z-10 min-h-[150px]">
+        {!isSubmitting ? (
+          <PayPalButtons
+            style={{ layout: "vertical", shape: "rect", color: "gold" }}
+            onClick={(data, actions) => {
+              const isFormValid = formRef.current?.reportValidity();
+              if (!isFormValid) {
+                setError("Please fill in all required fields.");
+                return actions.reject();
+              }
+              setError(null);
+              return actions.resolve();
+            }}
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [
+                  {
+                    description: `Purchase of ${book.title}`,
+                    amount: {
+                      currency_code: "USD",
+                      value: amount,
+                    },
+                  },
+                ],
+              });
+            }}
+            onApprove={(data, actions) => {
+              setIsSubmitting(true);
+              if (actions.order) {
+                return actions.order.capture().then((details) => {
+                  let pId = details.id;
+                  if (details.purchase_units && details.purchase_units[0] && details.purchase_units[0].payments && details.purchase_units[0].payments.captures) {
+                    pId = details.purchase_units[0].payments.captures[0].id;
+                  }
+                  handleOrderSave(pId || "UNKNOWN_PAYPAL_ID");
+                }).catch(err => {
+                  console.error('PayPal Capture Error:', err);
+                  setError(`Capture failed: ${err?.message || 'Transaction rejected by PayPal Sandbox.'}`);
+                  setIsSubmitting(false);
+                });
+              }
+              return Promise.resolve();
+            }}
+            onError={(err) => {
+              setError('Payment failed or was cancelled. Please try again.');
+              setIsSubmitting(false);
+            }}
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center py-8">
+            <Loader2 className="animate-spin text-[#ff4d4d] mb-4" size={48} strokeWidth={3} />
+            <p className="text-2xl font-bold text-[#2d2d2d] dark:text-white">Processing your order...</p>
+          </div>
+        )}
         <p className="text-lg text-center text-[#2d2d2d] mt-6 font-bold opacity-80 -rotate-1 flex items-center justify-center gap-2">
-          <span className="text-2xl">🔒</span> Secure Payments via Razorpay
+          <span className="text-2xl">🔒</span> Secure Payments via PayPal
         </p>
       </div>
     </form>
-    </>
+    </PayPalScriptProvider>
   );
 }

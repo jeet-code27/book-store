@@ -31,35 +31,35 @@ export const PRODUCTS = {
       { title: "Prompt Playbook", desc: "The Ultimate Premium AI Prompts Playbook (500+ battle-tested prompts ready to copy & paste)" }
     ]
   },
-  'divorce-dad': {
-    id: 'divorce-dad',
-    title: 'तलाकशुदा पिता की जीवन-रक्षा मार्गदर्शिका',
-    subtitle: 'अराजकता से स्पष्टता तक',
-    language: 'Hindi',
-    price: '$6',
-    priceUSD: 6,
-    priceINR: 499,
-    pages: '100+',
-    format: 'PDF',
-    coverImage: '/images/divorce-dad-cover.png',
-    description: 'तलाक के बाद एक अच्छे पिता बने रहने की व्यावहारिक मार्गदर्शिका। यह पुस्तक आपको कठिन समय में स्पष्टता और मार्गदर्शन प्रदान करेगी।',
+  'tintin-collection': {
+    id: 'tintin-collection',
+    title: 'The Tintin Collection – Complete Adventures',
+    subtitle: 'Digital Edition',
+    language: 'English',
+    price: '$14.99',
+    priceUSD: 14.99,
+    priceINR: 1200,
+    pages: '1000+',
+    format: 'PDF / CBR',
+    coverImage: '/images/tintin-cover.png',
+    description: 'Experience the complete adventures of Tintin, Snowy, and Captain Haddock in this ultimate digital collection.',
     chapters: [
-      'पहले 30 दिन',
-      'दैनिक जीवन-रक्षा प्रणाली',
-      'बच्चों के साथ रिश्ता',
-      'कठोर वास्तविकताएं',
-      'खुद को फिर से बनाना',
+      'Tintin in the Land of the Soviets',
+      'Tintin in the Congo',
+      'Tintin in America',
+      'Cigars of the Pharaoh',
+      'The Blue Lotus',
     ],
-    whyBuy: "तलाक ज़िंदगी का अंत नहीं है, बल्कि यह एक नई और बेहतर शुरुआत का मौका है! समाज अक्सर इसे एक हार या 'बुरी चीज़' की तरह देखता है, लेकिन सच यह है कि एक खुशहाल अलग पिता, एक दुखी शादीशुदा पिता से सौ गुना बेहतर होता है। यह किताब आपको सिखाएगी कि कैसे अपने इस नए सफर को आज़ादी से गले लगाएँ, और अपने बच्चों के लिए सबसे मज़बूत इंसान बनकर उभरें। आपका नया, शानदार जीवन बस शुरू ही हुआ है!",
+    whyBuy: "This is the ultimate digital collection of all 24 classic Tintin comic albums created by Hergé. Read them in high-quality digital format anytime, anywhere on your tablet, phone, or computer.",
     whoIsItFor: [
-      "जो पिता अपने बच्चों के लिए एक 'हीरो' बने रहना चाहते हैं।",
-      "जिन्हें इस मुश्किल दौर में मानसिक स्पष्टता और एक सही दिशा की ज़रूरत है।",
-      "जो डिप्रेशन से बाहर निकलकर एक नई, बेहतर और खुशहाल शुरुआत करना चाहते हैं।"
+      "Comic book enthusiasts and collectors.",
+      "Parents wanting to introduce their children to classic adventures.",
+      "Nostalgic fans of Hergé's timeless storytelling."
     ],
     whatsIncluded: [
-      { title: "व्यावहारिक मार्गदर्शिका", desc: "हर दिन के लिए प्रैक्टिकल टिप्स और सर्वाइवल ट्रिक्स।" },
-      { title: "कम्युनिकेशन फ्रेमवर्क", desc: "पूर्व-पत्नी और बच्चों के साथ बिना झगड़े बात करने के प्रभावी तरीके।" },
-      { title: "माइंडसेट शिफ्ट", desc: "निराशा से बाहर निकलकर एक मजबूत और आज़ाद इंसान बनने का रोडमैप।" }
+      { title: "Complete 24 Albums", desc: "All 24 original Tintin comic albums in high-definition." },
+      { title: "Digital Formats", desc: "Available in both PDF and CBZ/CBR formats for comic readers." },
+      { title: "Bonus Material", desc: "Includes character guides and behind-the-scenes artwork." }
     ]
   },
   'divorce-dad-eng': {

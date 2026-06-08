@@ -79,7 +79,7 @@ export default async function CheckoutPage({ params }: Props) {
                 <ShieldCheck className="text-[#ff4d4d] shrink-0 mt-1" size={28} strokeWidth={2.5} />
                 <p className="text-lg text-[#2d2d2d] font-bold leading-snug">
                   <span className="text-[#ff4d4d] font-heading text-xl inline-block mb-1">Safe & Secure.</span><br/>
-                  Checkout securely with Razorpay. Your PDF will be emailed within 24 hours.
+                  Checkout securely with PayPal. Your PDF will be emailed within 24 hours.
                 </p>
               </div>
             </div>

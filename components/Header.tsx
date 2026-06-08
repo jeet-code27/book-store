@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { BookOpen, Menu, X } from 'lucide-react';
-import CurrencyToggle from './CurrencyToggle';
 import { useState } from 'react';
 
 export default function Header() {
@@ -39,12 +38,10 @@ export default function Header() {
             <span className="relative z-10">Contact</span>
             <span className="absolute -bottom-1 left-0 w-0 h-1 bg-[#ff4d4d] transition-all group-hover:w-full wobbly"></span>
           </Link>
-          <CurrencyToggle />
         </nav>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-3">
-          <CurrencyToggle />
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className="text-[#2d2d2d] p-1.5 border-[3px] border-[#2d2d2d] bg-white wobbly-sm active:translate-y-1 hard-shadow-sm"

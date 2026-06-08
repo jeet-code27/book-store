@@ -3,7 +3,6 @@ import { Kalam, Patrick_Hand } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { CurrencyProvider } from '@/components/CurrencyContext';
 
 const kalam = Kalam({
   weight: ['400', '700'],
@@ -30,13 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${kalam.variable} ${patrickHand.variable} antialiased min-h-screen flex flex-col`}>
-        <CurrencyProvider>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </CurrencyProvider>
+        <Header />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
