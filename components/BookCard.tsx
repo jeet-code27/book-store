@@ -25,9 +25,30 @@ export default function BookCard({ book }: { book: Product }) {
         <h3 className="font-heading text-2xl font-bold text-[#2d2d2d] dark:text-[var(--color-paper)] mb-2 line-clamp-2">
           {book.title}
         </h3>
-        <p className="text-lg text-[#2d2d2d] dark:text-[#e5e0d8] mb-6 line-clamp-2 leading-snug">
+        <p className="text-lg text-[#2d2d2d] dark:text-[#e5e0d8] mb-4 line-clamp-2 leading-snug">
           {book.subtitle}
         </p>
+        
+        {book.chapters && book.chapters.length > 0 && (
+          <div className="mb-6 bg-[var(--color-brand-50)] dark:bg-[#2d2d2d] border-[2px] border-[#2d2d2d] p-3 wobbly-sm rotate-1">
+            <span className="block text-sm font-heading font-bold text-[#ff4d4d] mb-1">
+              {book.id.includes('bundle') || book.id.includes('collection') || book.id.includes('playbook') ? 'Books Included:' : 'Core Chapters:'}
+            </span>
+            <ul className="text-sm font-bold text-[#2d2d2d] dark:text-[#e5e0d8] space-y-1">
+              {book.chapters.slice(0, 3).map((chapter, index) => (
+                <li key={index} className="flex items-start gap-1">
+                  <span className="text-[#ff4d4d] shrink-0 mt-[2px]">•</span> 
+                  <span className="truncate">{chapter}</span>
+                </li>
+              ))}
+              {book.chapters.length > 3 && (
+                <li className="text-xs text-[#2d2d2d]/70 dark:text-[#e5e0d8]/70 italic mt-1">
+                  + {book.chapters.length - 3} more...
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
         
         <div className="flex items-center gap-4 text-base font-bold text-[#2d2d2d] dark:text-[#e5e0d8] mb-6">
           <div className="flex items-center gap-1 border-b-2 border-dashed border-[#2d2d2d] pb-1">

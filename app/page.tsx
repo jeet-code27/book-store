@@ -9,6 +9,18 @@ export default function Home() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Premium Book Store',
+            url: 'https://starbucksnews.com/',
+            description: 'Purchase premium digital books, guides, and curated bundles.',
+          }),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-24 pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

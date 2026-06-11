@@ -16,8 +16,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!book) return { title: 'Book Not Found' };
   
   return {
-    title: `${book.title} | Store`,
-    description: book.subtitle,
+    title: book.title,
+    description: book.description.substring(0, 160),
+    keywords: [book.title.toLowerCase(), 'ebook', 'download pdf', 'book bundle', 'purchase book'],
+    authors: [{ name: 'Premium Book Store' }],
+    publisher: 'Premium Book Store',
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `https://starbucksnews.com/books/${slug}`,
+    },
+    openGraph: {
+      title: book.title,
+      description: book.description.substring(0, 160),
+      url: `https://starbucksnews.com/books/${slug}`,
+      images: [
+        {
+          url: book.coverImage,
+          width: 800,
+          height: 1067,
+          alt: book.title,
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: book.title,
+      description: book.description.substring(0, 160),
+      images: [book.coverImage],
+    },
   };
 }
 
@@ -31,6 +61,25 @@ export default async function BookDetailsPage({ params }: Props) {
 
   return (
     <div className="min-h-screen pt-12 pb-24 relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: book.title,
+            description: book.description,
+            image: `https://starbucksnews.com${book.coverImage}`,
+            offers: {
+              '@type': 'Offer',
+              price: book.priceUSD,
+              priceCurrency: 'USD',
+              availability: 'https://schema.org/InStock',
+              url: `https://starbucksnews.com/books/${slug}`,
+            },
+          }),
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Link 
           href="/books" 

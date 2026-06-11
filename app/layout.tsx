@@ -18,8 +18,35 @@ const patrickHand = Patrick_Hand({
 });
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_SITE_NAME || 'Premium Book Store',
-  description: 'Purchase premium digital books and guides.',
+  metadataBase: new URL('https://starbucksnews.com'),
+  title: {
+    default: process.env.NEXT_PUBLIC_SITE_NAME || 'Premium Book Store | Best E-Books & Bundles',
+    template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME || 'Premium Book Store'}`,
+  },
+  description: 'Purchase premium digital books, guides, and curated bundles. From entrepreneurship to mindset, find the best books to elevate your life.',
+  keywords: ['digital books', 'ebooks', 'entrepreneurship books', 'motivational books', 'buy books online', 'premium ebooks'],
+  authors: [{ name: 'Premium Book Store' }],
+  publisher: 'Premium Book Store',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://starbucksnews.com',
+  },
+  openGraph: {
+    title: 'Premium Book Store | Best Selling E-Books & Bundles',
+    description: 'Purchase premium digital books, guides, and curated bundles. Instant PDF delivery.',
+    url: 'https://starbucksnews.com',
+    siteName: 'Premium Book Store',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Premium Book Store | Best Selling E-Books & Bundles',
+    description: 'Purchase premium digital books, guides, and curated bundles.',
+  },
 };
 
 export default function RootLayout({
