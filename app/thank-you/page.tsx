@@ -8,6 +8,23 @@ export const metadata = {
 export default function ThankYouPage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative">
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            fbq('track', 'Purchase', {
+              value: 9.99,
+              currency: 'USD',
+              contents: [
+                  {
+                      id: 'BOOK 1',
+                      quantity: 1
+                  }
+              ],
+              content_ids: '1',
+            });
+          `,
+        }}
+      />
       <div className="max-w-2xl w-full bg-white dark:bg-[#1a1a1a] border-[4px] border-[#2d2d2d] wobbly-md hard-shadow-lg p-10 sm:p-16 text-center rotate-1 relative">
         
         {/* Decorative Tape */}
