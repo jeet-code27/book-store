@@ -1,4 +1,36 @@
 export const PRODUCTS = {
+  'football-reels-bundle': {
+    id: 'football-reels-bundle',
+    title: '3000+ Football Reels Bundle ⚽🔥',
+    subtitle: 'Viral Football Content Pack',
+    language: 'Universal',
+    price: '$9.99',
+    priceUSD: 9.99,
+    priceINR: 499,
+    pages: '3000+ Videos',
+    format: 'MP4 / Reels',
+    coverImage: '/images/football-reels-cover.png',
+    description: 'Ab bina editing aur bina content banane ki tension ke apna Football Instagram Page, YouTube Shorts Channel ya Facebook Page grow karo! Ready-to-upload HD videos for maximum engagement.',
+    chapters: [
+      'Viral Football Content',
+      'Goals, Skills & Celebrations',
+      'Premium Edits & Highlights',
+      'Motivation Football Content',
+      'HD Quality Videos',
+      'No Copyright Issues (100% Safe)',
+    ],
+    whyBuy: "Sirf download karo, upload karo aur engagement boost karo! This is a beginner-friendly pack with 100% safe, no-copyright content. Ek baar lo, hamesha use karo. Instant delivery via Google Drive immediately after payment.",
+    whoIsItFor: [
+      "Football Theme Pages & Social Media Influencers.",
+      "YouTube Shorts, Instagram Reels & TikTok Creators.",
+      "Sports Content Creators who want to grow fast without editing."
+    ],
+    whatsIncluded: [
+      { title: "3000+ HD Reels", desc: "High-quality, ready-to-upload football videos for better reach." },
+      { title: "Instant Download", desc: "Get Google Drive access immediately after payment." },
+      { title: "Lifetime Access", desc: "No subscriptions—pay once and use forever." }
+    ]
+  },
   'claude-guide': {
     id: 'claude-guide',
     title: 'The Complete Guide to Building Skills for Claude',
