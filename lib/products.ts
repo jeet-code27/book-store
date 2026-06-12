@@ -10,7 +10,7 @@ export const PRODUCTS = {
     pages: '3000+ Videos',
     format: 'MP4 / Reels',
     coverImage: '/images/football-reels-cover.png',
-    description: 'Ab bina editing aur bina content banane ki tension ke apna Football Instagram Page, YouTube Shorts Channel ya Facebook Page grow karo! Ready-to-upload HD videos for maximum engagement.',
+    description: 'Grow your Football Instagram Page, YouTube Shorts Channel, or Facebook Page without the hassle of editing and creating content! Get ready-to-upload HD videos for maximum engagement.',
     chapters: [
       'Viral Football Content',
       'Goals, Skills & Celebrations',
@@ -19,7 +19,7 @@ export const PRODUCTS = {
       'HD Quality Videos',
       'No Copyright Issues (100% Safe)',
     ],
-    whyBuy: "Sirf download karo, upload karo aur engagement boost karo! This is a beginner-friendly pack with 100% safe, no-copyright content. Ek baar lo, hamesha use karo. Instant delivery via Google Drive immediately after payment.",
+    whyBuy: "Simply download, upload, and boost your engagement! This is a beginner-friendly pack with 100% safe, no-copyright content. Pay once and use it forever. Enjoy instant delivery via Google Drive immediately after payment.",
     whoIsItFor: [
       "Football Theme Pages & Social Media Influencers.",
       "YouTube Shorts, Instagram Reels & TikTok Creators.",
