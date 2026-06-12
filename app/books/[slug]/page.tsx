@@ -157,13 +157,13 @@ export default async function BookDetailsPage({ params }: Props) {
           </div>
           
           {/* Right Column: Details */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 mt-4 lg:mt-0">
             <div className="mb-12 relative">
-              <div className="absolute -top-4 -right-4 bg-[var(--color-brand-50)] text-[#2d2d2d] px-4 py-2 border-[3px] border-[#2d2d2d] wobbly-sm font-bold text-xl rotate-6 hard-shadow-sm z-10">
+              <div className="inline-block mb-6 bg-[var(--color-brand-50)] text-[#2d2d2d] px-4 py-2 border-[3px] border-[#2d2d2d] wobbly-sm font-bold text-xl -rotate-2 hard-shadow-sm">
                 {book.format} Download
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-heading font-extrabold text-[#2d2d2d] dark:text-[var(--color-paper)] mb-6 leading-tight relative inline-block">
+              <h1 className="text-5xl md:text-6xl font-heading font-extrabold text-[#2d2d2d] dark:text-[var(--color-paper)] mb-6 leading-tight relative block">
                 {book.title}
               </h1>
               <p className="text-2xl font-bold text-[#2d2d2d] dark:text-[var(--color-paper)] mb-8 opacity-90 leading-relaxed border-l-[4px] border-[#ff4d4d] pl-6 wobbly-sm">
